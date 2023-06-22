@@ -1,6 +1,7 @@
 package gunam.solaris.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class Title {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "titles")//DİĞER CLASSDAKİ SET'İN İSMİ
     private Set<User> users;
 

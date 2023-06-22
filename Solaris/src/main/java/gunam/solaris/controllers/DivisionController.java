@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.*;
 public class DivisionController {
     private final DivisionService divisionService;
 
+    @CrossOrigin
     @PostMapping("/add")
     ResponseEntity<?> addDivision(@RequestBody Division division) {
         return divisionService.addDivision(division);
     }
 
-    @GetMapping("/findAll")
+    @CrossOrigin
+    @GetMapping("/getAll")
     ResponseEntity<?> findAllDivisions() {
         return divisionService.findAllDivisions();
     }
@@ -27,6 +29,11 @@ public class DivisionController {
         return divisionService.findDivisionById(id);
     }
 
+    @CrossOrigin
+    @DeleteMapping("/delete/{id}")
+    ResponseEntity<?> deleteDivision(@PathVariable("id") int id) {
+        return divisionService.deleteDivision(id);
+    }
 
 
 

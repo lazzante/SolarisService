@@ -9,4 +9,6 @@ public interface TitleService {
     ResponseEntity<?> findAllTitles();
 
     ResponseEntity<?> findTitleById(int id);
+
+    ResponseEntity<?> deleteTitle(int id);
 }

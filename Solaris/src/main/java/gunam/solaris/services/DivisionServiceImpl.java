@@ -44,4 +44,14 @@ public class DivisionServiceImpl implements DivisionService {
 
         return ResponseEntity.status(HttpStatus.OK).body(division);
     }
+
+    @Override
+    public ResponseEntity<?> deleteDivision(int id) {
+        if (divisionRepository.existsById(id)) {
+            divisionRepository.deleteById(id);
+            return new ResponseEntity<>("Division Deleted Successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Division Can Not Found By Given Id", HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+    }
 }

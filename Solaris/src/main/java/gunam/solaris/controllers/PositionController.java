@@ -13,12 +13,14 @@ public class PositionController {
 
     private final PositionService positionService;
 
+    @CrossOrigin
     @PostMapping("/add")
     ResponseEntity<?> addPosition(@RequestBody Position position) {
         return positionService.addPosition(position);
     }
 
-    @GetMapping("/findAll")
+    @CrossOrigin
+    @GetMapping("/getAll")
     ResponseEntity<?> getAllPositions() {
         return positionService.getAllPositions();
     }
@@ -34,6 +36,7 @@ public class PositionController {
         return positionService.updatePosition(id,position);
     }
 
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     ResponseEntity<?> deletePosition(@PathVariable("id") int id) {
         return positionService.deletePosition(id);

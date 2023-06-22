@@ -1,5 +1,6 @@
 package gunam.solaris.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Division {
     @Column(name = "short_name")
     private String short_name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "divisions")
     private Set<User> users;
 

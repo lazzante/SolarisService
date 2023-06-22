@@ -11,4 +11,6 @@ public interface DivisionService {
     ResponseEntity<?> findAllDivisions();
 
     ResponseEntity<?> findDivisionById(int id);
+
+    ResponseEntity<?> deleteDivision(int id);
 }

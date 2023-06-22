@@ -44,4 +44,14 @@ public class TitleServiceImpl implements TitleService {
 
         return ResponseEntity.status(HttpStatus.OK).body(title);
     }
+
+    @Override
+    public ResponseEntity<?> deleteTitle(int id) {
+        if (titleRepository.existsById(id)) {
+            titleRepository.deleteById(id);
+            return new ResponseEntity<>("Title Deleted Successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Title Can Not Found By Given Id", HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+    }
 }

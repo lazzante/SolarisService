@@ -9,4 +9,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     SELECT u FROM User u WHERE u.username = :username
     """)
     User findUserByUsername(String username);
+
+
 }

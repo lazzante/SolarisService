@@ -18,6 +18,7 @@ public class SignUpController {
     @CrossOrigin
     @PostMapping("/signUp")
     public ResponseEntity<?> createUser(@RequestBody User user){
+        System.out.println(user.getAuthorities());
         return signUpService.createUser(user);
     }
 

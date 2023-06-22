@@ -13,21 +13,31 @@ public class TitleController {
     private final TitleService titleService;
 
 
+    @CrossOrigin
     @PostMapping("/add")
     ResponseEntity<?> addTitle(@RequestBody Title title){
         return titleService.addTitle(title);
     };
 
-    @GetMapping("/findAll")
+    @CrossOrigin
+    @GetMapping("/getAll")
     ResponseEntity<?> findAllTitles(){
         return titleService.findAllTitles();
     };
 
 
+    @CrossOrigin
     @GetMapping("/find/{id}")
     ResponseEntity<?> findTitleById(@PathVariable("id") int id){
         return titleService.findTitleById(id);
     };
+
+    @CrossOrigin
+    @DeleteMapping ("/delete/{id}")
+    ResponseEntity<?> deleteTitle(@PathVariable("id") int id){
+        return titleService.deleteTitle(id);
+    };
+
 
 
 
