@@ -28,4 +28,8 @@ public class Title {
     @ManyToMany(mappedBy = "titles")//DİĞER CLASSDAKİ SET'İN İSMİ
     private Set<User> users;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "personTitles")//DİĞER CLASSDAKİ SET'İN İSMİ
+    private Set<Log> logs;
+
 }

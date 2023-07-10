@@ -32,5 +32,13 @@ public class UserController {
     }
 
 
+    @CrossOrigin
+    @GetMapping("/uid/{uid}")
+    public ResponseEntity<?> findUserByUid(@PathVariable("uid") String uid){
+        return userService.findUserByUid(uid);
+    }
 
-}
+
+
+
+    }

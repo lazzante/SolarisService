@@ -27,5 +27,9 @@ public class Position {
     @ManyToMany(mappedBy = "positions")
     private Set<User> users;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "personPositions")//DİĞER CLASSDAKİ SET'İN İSMİ
+    private Set<Log> logs;
+
 
 }

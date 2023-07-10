@@ -1,6 +1,8 @@
 package gunam.solaris.services;
 
+import gunam.solaris.contracts.errors.RepositoryError;
 import gunam.solaris.entities.Position;
+import gunam.solaris.entities.Title;
 import gunam.solaris.entities.User;
 import gunam.solaris.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -41,7 +44,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<?> findUserById(int id) {
-        var user =userRepository.findById(id);
+        Optional<User> foundUser = userRepository.findById(id);
+        if(!foundUser.isPresent()){
+            RepositoryError error = new RepositoryError(404,"No User found !");
+            return ResponseEntity.status(HttpStatus.OK).body(error);
+        }
+
+        User user = foundUser.get();
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
+
+    @Override
+    public ResponseEntity<?> findUserByUid(String uid) {
+        Optional<User> foundUser = Optional.ofNullable(userRepository.findUserByUid(uid));
+        if(!foundUser.isPresent()){
+            RepositoryError error = new RepositoryError(404,"No User found !");
+            return ResponseEntity.status(HttpStatus.OK).body(error);
+        }
+        User user = foundUser.get();
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+
 }

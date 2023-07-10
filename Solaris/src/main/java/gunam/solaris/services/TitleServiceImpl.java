@@ -26,7 +26,7 @@ public class TitleServiceImpl implements TitleService {
     public ResponseEntity<?> findAllTitles() {
         List<Title> titles = titleRepository.findAll();
         if(titles==null||titles.isEmpty()){
-            RepositoryError error = new RepositoryError(200,"Any titles found !");
+            RepositoryError error = new RepositoryError(404,"Any titles found !");
             return ResponseEntity.status(HttpStatus.OK).body(error);
         }
         return ResponseEntity.status(HttpStatus.OK).body(titles);
@@ -36,7 +36,7 @@ public class TitleServiceImpl implements TitleService {
     public ResponseEntity<?> findTitleById(int id) {
         Optional<Title> foundTitle = titleRepository.findById(id);
         if(!foundTitle.isPresent()){
-            RepositoryError error = new RepositoryError(200,"No Title found !");
+            RepositoryError error = new RepositoryError(404,"No Title found !");
             return ResponseEntity.status(HttpStatus.OK).body(error);
         }
 

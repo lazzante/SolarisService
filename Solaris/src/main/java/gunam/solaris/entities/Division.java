@@ -28,4 +28,18 @@ public class Division {
     private Set<User> users;
 
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "divisions")
+    private Set<Log> logs;
+
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "equipmentDivisions")
+    private Set<Equipment> equipments;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "labratoryDivisions")
+    private Set<Labratory> labratories;
+
+
 }

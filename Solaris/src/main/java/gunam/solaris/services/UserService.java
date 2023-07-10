@@ -11,6 +11,9 @@ public interface UserService {
 
     ResponseEntity<?> findUserById(int id);
 
+    ResponseEntity<?> findUserByUid(String uid);
 
 
-}
+
+
+    }
