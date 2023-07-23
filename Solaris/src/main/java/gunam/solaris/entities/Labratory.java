@@ -20,7 +20,6 @@ public class Labratory {
     private String name;
 
     @Column(name = "bina")
-
     private String bina;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)

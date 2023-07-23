@@ -13,6 +13,8 @@ public interface UserService {
 
     ResponseEntity<?> findUserByUid(String uid);
 
+    ResponseEntity<?> updateUser(int id,User user);
+
 
 
 

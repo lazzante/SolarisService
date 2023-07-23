@@ -8,6 +8,8 @@ import gunam.solaris.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 
 
 
@@ -63,6 +67,23 @@ public class UserServiceImpl implements UserService {
         }
         User user = foundUser.get();
         return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+    @Override
+    public ResponseEntity<?> updateUser(int id,User user) {
+        String lastPassword = "";
+
+        if (userRepository.existsById(id)){
+            var lastUser = userRepository.findById(id);
+            lastPassword = lastUser.get().getPassword();
+            userRepository.deleteById(id);
+            user.setPassword(lastPassword);
+            userRepository.save(user);
+            return new ResponseEntity<>("User is deleted and saved again with given updates.",HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User Can Not Found By Given Id", HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+
     }
 
 

@@ -38,6 +38,12 @@ public class UserController {
         return userService.findUserByUid(uid);
     }
 
+    @CrossOrigin
+    @PostMapping ("/update/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable("id") int id,@RequestBody User user){
+        return userService.updateUser(id,user);
+    }
+
 
 
 

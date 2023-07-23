@@ -1,8 +1,7 @@
 package gunam.solaris.services;
 
 import gunam.solaris.contracts.errors.ApiError;
-import gunam.solaris.entities.Authority;
-import gunam.solaris.entities.User;
+import gunam.solaris.entities.*;
 import gunam.solaris.repositories.AuthorityRepository;
 import gunam.solaris.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -37,6 +36,11 @@ public class SignUpServiceImpl implements SignUpService {
         String firstname= user.getFirstname();
         String lastname = user.getLastname();
         Set<Authority> authorities = user.getAuthorities();
+        Set<Title> titles = user.getTitles();
+        Set<Position> positions = user.getPositions();
+        Set<Division> divisions = user.getDivisions();
+        Set<Equipment> equipments = user.getEquipments();
+
 
 
         ApiError error = new ApiError();

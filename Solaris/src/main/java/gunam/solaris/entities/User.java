@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -59,5 +60,14 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinTable(name = "users_divisions",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "division_id"))
     private Set<Division> divisions;
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    @JoinTable(name = "users_equipments",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "equipment_id"))
+    private Set<Equipment> equipments;
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<EquipmentUser> equipmentUsers;
 
 }

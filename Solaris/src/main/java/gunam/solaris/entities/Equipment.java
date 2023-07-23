@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -56,10 +57,18 @@ public class Equipment {
     @JoinTable(name = "equipments_divisions",joinColumns = @JoinColumn(name = "equipment_id"),inverseJoinColumns = @JoinColumn(name = "division_id"))
     private Set<Division> equipmentDivisions;
 
-
     @JsonIgnore
     @ManyToMany(mappedBy = "equipments")
     private Set<Log> logs;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "equipments")
+    private Set<User> users;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "equipment")
+    private List<EquipmentUser> equipmentUsers;
+
 
 
 
