@@ -11,4 +11,9 @@ public interface EquipmentUserReposityory extends JpaRepository<EquipmentUser,In
 
     @Query("SELECT e FROM EquipmentUser e WHERE e.equipment.id = :equipmentId")
     List<EquipmentUser> findByEquipmentId(@Param("equipmentId") int equipmentId);
+
+
+    EquipmentUser findEquipmentUserById(int equipmentId);
+
+
 }

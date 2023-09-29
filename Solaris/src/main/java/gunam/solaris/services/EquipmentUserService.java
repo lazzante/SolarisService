@@ -8,5 +8,7 @@ public interface EquipmentUserService {
     ResponseEntity<?> findEquipmentUsersByEquipmentId(int equipmentId);
     ResponseEntity<?> addEquipmentUser(EquipmentUser equipmentUser);
 
+    ResponseEntity<?> updateEquipmentUser(int id,EquipmentUser equipmentUser);
+
 
 }

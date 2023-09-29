@@ -23,6 +23,12 @@ public class EquipmentUser {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "authdate")
+    private String authdate;
+
+    @Column(name = "division")
+    private String division;
+
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")

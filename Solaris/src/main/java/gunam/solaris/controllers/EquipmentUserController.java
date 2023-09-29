@@ -35,7 +35,11 @@ public class EquipmentUserController {
         return equipmentUserService.addEquipmentUser(equipmentUser);
     }
 
-
+    @CrossOrigin
+    @PostMapping("/update/{id}")
+    ResponseEntity<?> updateEquipmentUser(@PathVariable("id") int id,@RequestBody EquipmentUser equipmentUser){
+        return  equipmentUserService.updateEquipmentUser(id,equipmentUser);
+    }
 
 
 
